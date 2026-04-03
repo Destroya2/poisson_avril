@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poisson d'Avril</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #0b1a3b 0%, #132d6b 40%, #1a4a8a 100%);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Bulles d'eau en arrière-plan */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.06);
+            animation: bubbleRise linear infinite;
+        }
+
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Poisson principal */
+        .fish-container {
+            animation: fishFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3));
+            margin-bottom: 50px;
+        }
+
+        @keyframes fishFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            30% {
+                transform: translateY(-18px) rotate(2deg);
+            }
+            70% {
+                transform: translateY(10px) rotate(-1.5deg);
+            }
+        }
+
+        /* Texte */
+        .title {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+            animation: titleAppear 1s ease 0.5s both;
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff6d00, #ffc107, #ff6d00, transparent);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        @keyframes titleAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+                letter-spacing: 20px;
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                letter-spacing: 6px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .title {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+            }
+
+            .fish-container svg {
+                width: 220px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Poisson SVG -->
+    <div class="fish-container">
+        <svg width="320" height="260" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Nageoire dorsale -->
+            <path d="M160 55C165 25 190 10 200 15C210 20 195 50 185 65" fill="#0d7fd4" stroke="#0a5ea0" stroke-width="1.5"/>
+            <path d="M170 50C172 38 180 28 188 22" stroke="#0a5ea0" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+            <path d="M175 55C176 45 182 35 186 30" stroke="#0a5ea0" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+
+            <!-- Queue -->
+            <path d="M72 130C40 95 25 60 15 50C12 47 10 55 15 70C22 90 35 110 50 125" fill="#ff6d00" stroke="#e65100" stroke-width="1.5"/>
+            <path d="M72 130C40 165 25 200 15 210C12 213 10 205 15 190C22 170 35 150 50 135" fill="#ff8f00" stroke="#e65100" stroke-width="1.5"/>
+            <!-- Lignes queue -->
+            <path d="M55 120C40 105 30 85 22 72" stroke="#e65100" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+            <path d="M55 130C38 130 28 130 18 130" stroke="#e65100" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+            <path d="M55 140C40 155 30 175 22 188" stroke="#e65100" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+            <!-- Nageoire ventrale -->
+            <path d="M150 175C145 200 155 225 165 230C175 235 178 215 170 195" fill="#0d7fd4" stroke="#0a5ea0" stroke-width="1.5"/>
+            <path d="M155 185C154 200 158 215 163 222" stroke="#0a5ea0" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+            <!-- Nageoire pectorale -->
+            <path d="M190 150C200 165 195 185 188 190C180 195 175 178 180 160" fill="#1090e0" stroke="#0a5ea0" stroke-width="1.5"/>
+
+            <!-- Corps principal -->
+            <ellipse cx="160" cy="130" rx="100" ry="65" fill="url(#bodyGradient)" stroke="#0a5ea0" stroke-width="2"/>
+
+            <!-- Écailles (motif subtil) -->
+            <path d="M100 110C108 105 116 110 108 118" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M120 100C128 95 136 100 128 108" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M140 105C148 100 156 105 148 113" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M110 130C118 125 126 130 118 138" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M130 125C138 120 146 125 138 133" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M150 120C158 115 166 120 158 128" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M120 148C128 143 136 148 128 156" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M140 143C148 138 156 143 148 151" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+            <path d="M160 138C168 133 176 138 168 146" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+
+            <!-- Ligne latérale -->
+            <path d="M85 130C120 125 180 120 240 128" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="4 6"/>
+
+            <!-- Reflet sur le corps -->
+            <ellipse cx="170" cy="105" rx="55" ry="20" fill="url(#shineGradient)" opacity="0.3"/>
+
+            <!-- Oeil - blanc -->
+            <circle cx="230" cy="115" r="16" fill="white" stroke="#0a5ea0" stroke-width="1.5"/>
+            <!-- Oeil - iris -->
+            <circle cx="233" cy="114" r="10" fill="#1a237e"/>
+            <!-- Oeil - pupille -->
+            <circle cx="235" cy="112" r="5" fill="#000"/>
+            <!-- Oeil - reflet -->
+            <circle cx="237" cy="110" r="2.5" fill="white"/>
+            <circle cx="231" cy="116" r="1.2" fill="rgba(255,255,255,0.6)"/>
+
+            <!-- Sourcil -->
+            <path d="M218 100C225 95 240 95 245 100" stroke="#0a5ea0" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+            <!-- Bouche (sourire) -->
+            <path d="M252 132C258 130 262 134 258 138" stroke="#0a5ea0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+            <!-- Joue -->
+            <circle cx="242" cy="138" r="6" fill="#ff8a80" opacity="0.3"/>
+
+            <!-- Bulles -->
+            <circle cx="272" cy="115" r="4" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+            <circle cx="285" cy="100" r="3" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+            <circle cx="278" cy="90" r="2" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+            <circle cx="290" cy="108" r="1.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.7"/>
+
+            <!-- Dégradés -->
+            <defs>
+                <linearGradient id="bodyGradient" x1="60" y1="70" x2="260" y2="190">
+                    <stop offset="0%" stop-color="#1e88e5"/>
+                    <stop offset="35%" stop-color="#1565c0"/>
+                    <stop offset="70%" stop-color="#0d47a1"/>
+                    <stop offset="100%" stop-color="#1565c0"/>
+                </linearGradient>
+                <radialGradient id="shineGradient" cx="50%" cy="50%">
+                    <stop offset="0%" stop-color="white"/>
+                    <stop offset="100%" stop-color="white" stop-opacity="0"/>
+                </radialGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Texte -->
+    <h1 class="title">Poisson d'Avril</h1>
+
+    <!-- Bulles d'arrière-plan générées en JS -->
+    <script>
+        // Générer les bulles d'arrière-plan
+        const body = document.body;
+        for (let i = 0; i < 20; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 30 + 10;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDuration = (Math.random() * 8 + 6) + 's';
+            bubble.style.animationDelay = (Math.random() * 10) + 's';
+            body.appendChild(bubble);
+        }
+    </script>
+</body>
+</html>
