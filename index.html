@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poisson d'Avril</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -91,6 +94,32 @@
             border-radius: 2px;
         }
 
+        .info-text {
+            margin-top: 8px;
+            max-width: 720px;
+            padding: 14px 20px;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            line-height: 1.6;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(8px);
+        }
+
+        .info-text a {
+            color: #ffd166;
+            text-decoration: none;
+        }
+
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+
         @keyframes titleAppear {
             from {
                 opacity: 0;
@@ -108,6 +137,12 @@
             .title {
                 font-size: 2.2rem;
                 letter-spacing: 4px;
+            }
+
+            .info-text {
+                max-width: calc(100% - 32px);
+                font-size: 0.95rem;
+                padding: 12px 16px;
             }
 
             .fish-container svg {
@@ -206,6 +241,11 @@
 
     <!-- Texte -->
     <h1 class="title">Poisson d'Avril</h1>
+    <p class="info-text">
+        Pour avoir les informations sur les offres en cours, contactez ces numeros sur WhatsApp :
+        <a href="https://wa.me/22666903471" target="_blank" rel="noopener noreferrer">+226 66 90 34 71</a>,
+        +226 25 39 40 44
+    </p>
 
     <!-- Bulles d'arrière-plan générées en JS -->
     <script>
